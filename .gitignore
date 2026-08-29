@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.py[cod]
+.streamlit/
+
+# 개인 카카오톡 대화 파일
+KakaoTalk_*.txt
+KakaoTalk_*.csv
+*.csv
+!requirements.txt
