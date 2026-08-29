@@ -203,6 +203,66 @@ DASHBOARD_ACCENTS = [
 ]
 
 
+def inject_theme_css() -> None:
+    st.markdown(
+        """
+        <style>
+        :root { --primary-color: #7C3AED; }
+
+        .stApp a { color: #7C3AED !important; }
+
+        /* 탭 선택/호버 */
+        .stTabs [data-baseweb="tab-highlight"] {
+            background-color: #7C3AED !important;
+        }
+        .stTabs [data-baseweb="tab"]:hover {
+            color: #7C3AED !important;
+            background-color: #F5F3FF !important;
+        }
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {
+            color: #7C3AED !important;
+        }
+        button[data-baseweb="tab"]:hover {
+            color: #7C3AED !important;
+            background-color: #F5F3FF !important;
+        }
+        button[data-baseweb="tab"][aria-selected="true"] {
+            color: #7C3AED !important;
+        }
+
+        /* 버튼, 업로드, 셀렉트 호버 */
+        .stButton > button:hover,
+        .stDownloadButton > button:hover,
+        [data-testid="stFileUploader"] button:hover {
+            border-color: #7C3AED !important;
+            color: #7C3AED !important;
+            background-color: #F5F3FF !important;
+        }
+        [data-testid="stFileUploaderDropzone"]:hover {
+            border-color: #7C3AED !important;
+            background-color: #F5F3FF !important;
+        }
+        div[data-baseweb="select"] > div:hover,
+        div[data-baseweb="select"] > div:focus-within {
+            border-color: #7C3AED !important;
+        }
+        [data-testid="stExpander"]:hover summary,
+        [data-testid="stExpander"] details:hover summary {
+            color: #7C3AED !important;
+        }
+        [data-testid="stSidebarCollapseButton"]:hover button,
+        [data-testid="stBaseButton-headerNoPadding"]:hover {
+            color: #7C3AED !important;
+        }
+        div[data-testid="stMetric"]:hover {
+            border-color: #C4B5FD !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def inject_dashboard_css() -> None:
     st.markdown(
         """
@@ -780,6 +840,7 @@ def render_sidebar_details(df: pd.DataFrame | None) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="카카오톡 대화 분석기", layout="wide")
+    inject_theme_css()
     st.title("💬 카카오톡 대화 분석기")
 
     uploaded_file = render_sidebar_intro()
