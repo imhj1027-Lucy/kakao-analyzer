@@ -1,10 +1,6 @@
-venv/
 __pycache__/
 *.py[cod]
 .streamlit/
 
-# 개인 카카오톡 대화 파일
+# 카카오톡 txt는 올리지 않음 (csv는 포함)
 KakaoTalk_*.txt
-KakaoTalk_*.csv
-*.csv
-!requirements.txt
